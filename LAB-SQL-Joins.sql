@@ -47,19 +47,19 @@ GROUP BY c.category_id
 -- Bonus
 -- 5. Identify the film categories with the longest average running time
 
-SELECT c.name AS 'category_name' , round(AVG(f.`length`),2) AS 'mean_running_time' 
+SELECT c.name AS 'category_name' , round(AVG(f.`length`),2) AS 'mean_runing_time' 
 FROM film f
 JOIN film_category fc
 ON f.film_id = fc.film_id
 JOIN category c
 ON fc.category_id = c.category_id
 GROUP BY c.category_id
-ORDER BY mean_running_time DESC 
-LIMIT 5;
+ORDER BY mean_runing_time DESC 
+-- LIMIT 5;
 
 -- 6. Display the top 10 most frequently rented movies in descending order
 
-SELECT *, COUNT(f.film_id)
+SELECT f.title, COUNT(f.film_id)
 FROM rental r
 JOIN inventory i
 ON r.inventory_id = i.inventory_id
