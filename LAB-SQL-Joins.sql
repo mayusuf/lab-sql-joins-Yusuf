@@ -69,6 +69,17 @@ GROUP BY f.film_id
 ORDER BY COUNT(f.film_id) DESC
 LIMIT 10;
 
+--- 7. Determine if "Academy Dinosaur" can be rented from Store 1
+
+SELECT f.title, i.store_id
+FROM inventory i
+JOIN film f 
+ON i.film_id = f.film_id
+JOIN rental r 
+ON i.inventory_id = r.inventory_id
+WHERE f.title = 'Academy Dinosaur'
+GROUP BY  f.title, i.store_id
+order BY  i.store_id ;
 
 -- 8 Provide a list of all distinct film titles, along with their availability status in the inventory. Include a column indicating whether 
 -- each title is 'Available' or 'NOT available.' Note that there are 42 titles that are not in the inventory, and this information 
